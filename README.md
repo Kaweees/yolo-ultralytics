@@ -14,17 +14,17 @@
 
 </div>
 
-<a href="https://github.com/Kaweees/paper2code">
+<a href="https://github.com/Kaweees/yolo-ultralytics">
   <img alt="Python Logo" src="assets/img/python.png" align="right" width="150">
 </a>
 
 <div align="left">
-  <h1><em><a href="https://miguelvf.dev/blog/dotfiles/compendium">~paper2code</a></em></h1>
+  <h1><em><a href="https://miguelvf.dev/blog/dotfiles/compendium">~yolo-ultralytics</a></em></h1>
 </div>
 
 <!-- ABOUT THE PROJECT -->
 
-A template for developing production-ready Python applications.
+A workflow for training, evaluating, and exportig an Ultralytics YOLOv11 instance segmetnation model using a Roboflow dataset.
 
 ### Built With
 
@@ -47,8 +47,8 @@ To get a local copy of the project up and running on your machine, follow these 
 1. Clone the project repository
 
    ```sh
-   git clone https://github.com/Kaweees/paper2code.git
-   cd paper2code
+   git clone https://github.com/Kaweees/yolo-ultralytics.git
+   cd yolo-ultralytics
    ```
 
 2. Install the virtual environment and pre-commit hooks
@@ -68,7 +68,7 @@ To get a local copy of the project up and running on your machine, follow these 
 ## Project Structure
 
 ```sh
-paper2code/
+yolo-ultralytics/
 ├── .github/                       - GitHub Actions CI/CD workflows
 ├── scripts/                       - Standalone scripts
 ├── shared/
@@ -88,12 +88,12 @@ The source code for this project is distributed under the terms of the MIT Licen
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/Kaweees/paper2code.svg?style=for-the-badge
-[contributors-url]: https://github.com/Kaweees/paper2code/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Kaweees/paper2code.svg?style=for-the-badge
-[forks-url]: https://github.com/Kaweees/paper2code/network/members
-[stars-shield]: https://img.shields.io/github/stars/Kaweees/paper2code.svg?style=for-the-badge
-[stars-url]: https://github.com/Kaweees/paper2code/stargazers
+[contributors-shield]: https://img.shields.io/github/contributors/Kaweees/yolo-ultralytics.svg?style=for-the-badge
+[contributors-url]: https://github.com/Kaweees/yolo-ultralytics/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Kaweees/yolo-ultralytics.svg?style=for-the-badge
+[forks-url]: https://github.com/Kaweees/yolo-ultralytics/network/members
+[stars-shield]: https://img.shields.io/github/stars/Kaweees/yolo-ultralytics.svg?style=for-the-badge
+[stars-url]: https://github.com/Kaweees/yolo-ultralytics/stargazers
 
 <!-- MARKDOWN SHIELD BAGDES & LINKS -->
 <!-- https://github.com/Ileriayo/markdown-badges -->
