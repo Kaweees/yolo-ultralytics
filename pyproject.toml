@@ -1,69 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
-name = "modern-python"
+name = "modern_python"
 version = "0.0.1"
 description = "A template for developing production-ready Python applications."
 authors = [
   { name = "Miguel Villa Floran", email = "miguel.villafloran@gmail.com" },
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.12,<3.13"
 readme = "README.md"
 license = { file = "LICENSE" }
 
 dependencies = [
-  "utils",
-  "core",
+  "dotenv>=0.9.9",
+  "roboflow>=1.2.11",
   "typer>=0.12.5",
-  "pre-commit>=4.1.0",
-  "ipykernel>=6.29.5",
-  "deptry>=0.23.0",
-  "mypy>=1.15.0",
-  "pytest-cov>=6.0.0",
+  "ultralytics>=8.3.235",
 ]
 
-[tool.uv.sources]
-utils = { workspace = true }
-core = { workspace = true }
-
 [tool.uv.workspace]
-members = ["shared/*", "src/*"]
+members = []
 
 [tool.uv]
 package = false
 
-[tool.black]
-line-length = 88
-exclude = '''
-^/(
-  (
-      \.eggs         # exclude a few common directories in the
-    | \.git          # root of the project
-    | \.hg
-    | \.mypy_cache
-    | \.venv
-    | _build
-    | build
-    | dist
-    | .notebooks
-    | .nox
-  )
-)
-'''
+[dependency-groups]
+dev = ["pre-commit>=4.1.0", "ipykernel>=6.29.5"]
 
-[tool.isort]
-profile = "black"
-extend_skip = [".tmp", ".venv"]
+[tool.hatch.metadata]
+allow-direct-references = true
 
-[tool.mypy]
-exclude = "^.tmp/"
-ignore_missing_imports = true
-
-[tool.bandit]
-skips = ['B101']
-
-[tool.ruff]
-lint.ignore = ["E501"]
-extend-exclude = ["__pycache__", "docs", "site", ".tmp"]
+[tool.hatch.build.targets.wheel]
+packages = []
 
 [tool.pytest.ini_options]
-cache_dir = "/home/vscode/workspace/.cache/pytest"
-pythonpath = [".", "scripts", "src"]
+cache_dir = ".pytest_cache"
+pythonpath = ["."]

@@ -3,10 +3,13 @@
 # run `just` from this directory to see available commands
 
 alias i := install
+alias u := update
 alias p := pre_commit
+alias b := build
 alias r := run
-alias c := clean
 alias ch := check
+alias c := clean
+alias f := format
 alias a := add_scripts
 
 # Default command when 'just' is run without arguments
@@ -15,35 +18,50 @@ default:
 
 # Install the virtual environment and pre-commit hooks
 install:
-  uv sync
-  uv run pre-commit install
+  @echo "Installing..."
+  @uv sync
+  @uv run pre-commit install --install-hooks
+
+update:
+  @echo "Updating..."
+  @uv sync --upgrade
+  @uv run pre-commit autoupdate
 
 # Run pre-commit
 pre_commit:
-  uv run pre-commit run -a
+  @echo "Running pre-commit..."
+  @uv run pre-commit run -a
 
-# Run a package with specified architecture
-# Usage: just run [arch=x86_64]
-run *args='core':
-  uv run {{args}}
+# Build the project
+build target:
+  @echo "Building..."
+  @uv run hatch build --target {{target}}
 
-# Clean the project
-clean:
-  @# Remove cached files
-  @find . -type d -name "__pycache__" -exec rm -r {} +
-  @find . -type d -name "*.egg-info" -exec rm -r {} +
+# Run a package
+run package="core" *args="":
+  @echo "Running..."
+  @uv run {{package}} {{args}}
 
 # Run code quality tools
 check:
-  @# Check lock file consistency
-  uv lock --locked
-  @# Run pre-commit
-  uv run pre-commit run -a
-  @# Run mypy
-  uv run mypy .
-  @# Run deptry with ignored issues
-  uv run deptry . --ignore=DEP002,DEP003
+  @echo "Checking..."
+  @uv lock --locked
+  @uv run pre-commit run -a
+
+# Remove build artifacts and non-essential files
+clean:
+  @echo "Cleaning..."
+  @find . -type d -name ".venv" -exec rm -rf {} +
+  @find . -type d -name "__pycache__" -exec rm -rf {} +
+  @find . -type d -name "*.ruff_cache" -exec rm -rf {} +
+  @find . -type d -name "*.egg-info" -exec rm -rf {} +
+
+# Format the project
+format:
+  @echo "Formatting..."
+  @find . -name "*.nix" -type f -exec nixfmt {} \;
 
 # Add scripts
 add_scripts:
-  uv add --script scripts/this.py 'typer>=0.12.5'
+  @echo "Adding scripts..."
+  @uv add --script scripts/this.py 'typer>=0.12.5'

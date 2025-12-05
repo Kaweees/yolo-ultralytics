@@ -24,7 +24,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-A workflow for training, evaluating, and exportig an Ultralytics YOLOv11 instance segmetnation model using a Roboflow dataset.
+A workflow for training, evaluating, and exporting an Ultralytics YOLOv11 segmentation model using a Roboflow dataset.
 
 ### Built With
 
